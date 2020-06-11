@@ -1,5 +1,6 @@
 from django.http import HttpResponse
-from django.template import Template, Context
+# from django.template import Template, Context
+from django.template import loader
 import datetime
 
 
@@ -13,16 +14,20 @@ class Person(object):
 def greeting(request):  # First view
     person = Person('Alice', 'Smith')
     course_themes = ['Templates', 'Models', 'Forms', 'Views', 'Deploy']
-    external_doc = open("/Users/f/git/django-basics/Project01/Project01/templates/greetings.html")
-    tmplt = Template(external_doc.read())  # Template
-    external_doc.close()
-    ctxt = Context({'person': person,
-                    'current_date': datetime.datetime.now(),
-                    'themes': course_themes
-                    }
-                   )  # context
+    # external_doc = open("/Users/f/git/django-basics/Project01/Project01/templates/greetings.html")
+    # tmplt = Template(external_doc.read())  # Template
+    # external_doc.close()
+    external_doc = loader.get_template('greetings.html')
+    # ctxt = Context({'person': person,
+    #                 'current_date': datetime.datetime.now(),
+    #                 'themes': course_themes
+    #                 }
+    #                )  # context
 
-    document = tmplt.render(ctxt)
+    document = external_doc.render({'person': person,
+                                    'current_date': datetime.datetime.now(),
+                                    'themes': course_themes
+                                    })
     return HttpResponse(document)
 
 
