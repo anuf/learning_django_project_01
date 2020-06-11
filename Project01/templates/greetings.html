@@ -6,8 +6,16 @@
 </head>
 <body>
     <h1>
-    Hi {{person.name}} {{person.surname.upper}}! This is the first template!
+    Hi {{person.name|upper}} {{person.surname.upper}}! This is the first template!
     </h1>
+
+    {% comment %}
+    DO NOT WORRY ABOUT THIS!
+    {% endcomment %}
+    {% if person.name == 'Alice' %}
+        <p>Course taught by titular professor</p>
+    {% endif %}
+
     <h2>
     It's {{current_date.date}}  # Accessing a value from the python datetime object
     </h2>
@@ -16,7 +24,7 @@
         <ul>
         {% if themes %}
             {% for theme in themes %}
-                <li>{{theme}}</li>
+                <li>{{theme|first|lower}}</li> {# filter applied #}
             {% endfor %}
         {% else %}
             <p>There are no elements to show.</p>
