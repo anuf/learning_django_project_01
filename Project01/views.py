@@ -1,9 +1,16 @@
 from django.http import HttpResponse
+from django.template import Template, Context
 import datetime
 
 
 def greeting(request):  # First view
-    return HttpResponse("Hi there! This is a very simple page with Django!")
+    external_doc = open("/Users/f/git/django-basics/Project01/Project01/templates/greetings.html")
+    tmplt = Template(external_doc.read())  # Template
+    external_doc.close()
+    ctxt = Context()  # context
+
+    document = tmplt.render(ctxt)
+    return HttpResponse(document)
 
 
 def bye(request):  # Second view
