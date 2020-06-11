@@ -76,3 +76,15 @@ def calculate_age(request, age, year):
         </html>
         """.format(year, future_age)
     return HttpResponse(document)
+
+
+def c_course(request):
+    current_date = datetime.datetime.now()
+
+    return render(request, "course_c.html", {"current_date": current_date})
+
+
+def css_course(request):
+    current_date = datetime.datetime.now()
+
+    return render(request, "course_css.html", {"current_date": current_date})

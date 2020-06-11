@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from Project01.views import greeting, bye, get_current_date, calculate_age
+from Project01.views import greeting, bye, get_current_date, calculate_age, c_course, css_course
 
 
 urlpatterns = [
@@ -23,5 +23,7 @@ urlpatterns = [
     path('greeting/', greeting),
     path('bye/', bye),
     path('current_date', get_current_date),
-    path('age/<int:age>/<int:year>', calculate_age)
+    path('age/<int:age>/<int:year>', calculate_age),
+    path('c_course/', c_course),
+    path('css_course/', css_course)
 ]
