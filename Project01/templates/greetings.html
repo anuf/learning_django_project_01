@@ -5,7 +5,8 @@
     <title>Title</title>
 </head>
 <body>
-    <h1>
+    {% include "navigation-bar.html" %}
+    <h1 style="color: green">
     Hi {{person.name|upper}} {{person.surname.upper}}! This is the first template!
     </h1>
 
