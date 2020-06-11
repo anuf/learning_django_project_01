@@ -4,10 +4,11 @@ import datetime
 
 
 def greeting(request):  # First view
+    name = "Alice"
     external_doc = open("/Users/f/git/django-basics/Project01/Project01/templates/greetings.html")
     tmplt = Template(external_doc.read())  # Template
     external_doc.close()
-    ctxt = Context()  # context
+    ctxt = Context({'name':name})  # context
 
     document = tmplt.render(ctxt)
     return HttpResponse(document)
