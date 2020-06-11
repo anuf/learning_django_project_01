@@ -12,10 +12,15 @@ class Person(object):
 
 def greeting(request):  # First view
     person = Person('Alice', 'Smith')
+    course_themes = ['Templates', 'Models', 'Forms', 'Views', 'Deploy']
     external_doc = open("/Users/f/git/django-basics/Project01/Project01/templates/greetings.html")
     tmplt = Template(external_doc.read())  # Template
     external_doc.close()
-    ctxt = Context({'person': person, 'current_date': datetime.datetime.now()})  # context
+    ctxt = Context({'person': person,
+                    'current_date': datetime.datetime.now(),
+                    'themes': course_themes
+                    }
+                   )  # context
 
     document = tmplt.render(ctxt)
     return HttpResponse(document)

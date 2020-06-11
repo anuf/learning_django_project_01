@@ -6,10 +6,23 @@
 </head>
 <body>
     <h1>
-    Hi {{person.name}} {{person.surname}}! This is the first template!
+    Hi {{person.name}} {{person.surname.upper}}! This is the first template!
     </h1>
     <h2>
     It's {{current_date.date}}  # Accessing a value from the python datetime object
     </h2>
+    <p><strong>Course themes</strong></p>
+    <p>
+        <ul>
+        {% if themes %}
+            {% for theme in themes %}
+                <li>{{theme}}</li>
+            {% endfor %}
+        {% else %}
+            <p>There are no elements to show.</p>
+        {% endif %}
+        </ul>
+
+    </p>
 </body>
 </html>
