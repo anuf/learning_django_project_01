@@ -3,12 +3,19 @@ from django.template import Template, Context
 import datetime
 
 
+class Person(object):
+
+    def __init__(self, name , surname):
+        self.name = name
+        self.surname = surname
+
+
 def greeting(request):  # First view
-    name = "Alice"
+    person = Person('Alice', 'Smith')
     external_doc = open("/Users/f/git/django-basics/Project01/Project01/templates/greetings.html")
     tmplt = Template(external_doc.read())  # Template
     external_doc.close()
-    ctxt = Context({'name':name})  # context
+    ctxt = Context({'person': person, 'current_date': datetime.datetime.now()})  # context
 
     document = tmplt.render(ctxt)
     return HttpResponse(document)
