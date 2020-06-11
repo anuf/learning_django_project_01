@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 # from django.template import Template, Context
 from django.template import loader
+from django.shortcuts import render
 import datetime
 
 
@@ -17,18 +18,21 @@ def greeting(request):  # First view
     # external_doc = open("/Users/f/git/django-basics/Project01/Project01/templates/greetings.html")
     # tmplt = Template(external_doc.read())  # Template
     # external_doc.close()
-    external_doc = loader.get_template('greetings.html')
+    # external_doc = loader.get_template('greetings.html')
     # ctxt = Context({'person': person,
     #                 'current_date': datetime.datetime.now(),
     #                 'themes': course_themes
     #                 }
     #                )  # context
 
-    document = external_doc.render({'person': person,
-                                    'current_date': datetime.datetime.now(),
-                                    'themes': course_themes
-                                    })
-    return HttpResponse(document)
+    # document = external_doc.render({'person': person,
+    #                                 'current_date': datetime.datetime.now(),
+    #                                 'themes': course_themes
+    #                                 })
+    return render(request, "greetings.html", {'person': person,
+                                              'current_date': datetime.datetime.now(),
+                                              'themes': course_themes
+                                              })
 
 
 def bye(request):  # Second view
