@@ -15,11 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from Project01.views import greeting, bye
+from Project01.views import greeting, bye, get_current_date, calculate_age
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('greeting/', greeting),
-    path('bye/', bye)
+    path('bye/', bye),
+    path('current_date', get_current_date),
+    path('age/<int:age>/<int:year>', calculate_age)
 ]
